@@ -5,19 +5,13 @@
 //json encode
 class OST implements JsonSerializable {
 
-    private $ID;
-    private $name;
-    private $videoGameName;
-    private $releaseYear;
-    private $trackList;
+    private int $ID;
+    private string $name;
+    private string $videoGameName;
+    private int $releaseYear;
+    private string $trackList;
 
-    /**
-     * @param $ID
-     * @param $name
-     * @param $videoGameName
-     * @param $releaseYear
-     * @param $trackList
-     */
+
     public function __construct($ID, $name, $videoGameName, $releaseYear, $trackList)
     {
         $this->ID = $ID;
@@ -30,48 +24,35 @@ class OST implements JsonSerializable {
 
     public function jsonSerialize(): mixed
     {
-        return $this->ID;
-        return $this->name;
-        return $this->releaseYear;
-        return $this->trackList;
-        return $this->videoGameName;
+        return array(
+            'ID' =>$this->getID(),
+            'name' => $this->getName(),
+            'videoGameName' => $this->getVideoGameName(),
+            'releaseYear' => $this->getReleaseYear(),
+            'trackList' => $this->getTrackList()
+        );
     }
 
-    /**
-     * @return mixed
-     */
     public function getID()
     {
         return $this->ID;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @return mixed
-     */
     public function getVideoGameName()
     {
         return $this->videoGameName;
     }
 
-    /**
-     * @return mixed
-     */
     public function getReleaseYear()
     {
         return $this->releaseYear;
     }
-
-    /**
-     * @return mixed
-     */
+    
     public function getTrackList()
     {
         return $this->trackList;
