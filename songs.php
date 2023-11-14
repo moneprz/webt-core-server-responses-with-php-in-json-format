@@ -1,24 +1,26 @@
 <?php
 
-class songs implements JsonSerializable
+class song implements JsonSerializable
 {
-
-    private int $id;
-    private string $name;
-    private string $gameName;
-    private int $releaseYea;
-    private array $tracklist;
-    public function __construct($id, $name, $gameName, $releaseYear, $tracklist){
-        $this->id = $id;
+    protected int $ID;
+    protected string $name;
+    protected string $artist;
+    protected string $track;
+    protected int $number;
+    protected int $duration;
+    public function __construct($ID, $name, $artist, $track, $number, $duration)
+    {
+        $this->ID = $ID;
         $this->name = $name;
-        $this->gameName = $gameName;
-        $this->releaseYea = $releaseYear;
-        $this->tracklist = $tracklist;
+        $this->artist = $artist;
+        $this->track = $track;
+        $this->number = $number;
+        $this->duration = $duration;
     }
 
-    public function getId(): int
+    public function getID(): int
     {
-        return $this->id;
+        return $this->ID;
     }
 
     public function getName(): string
@@ -26,24 +28,38 @@ class songs implements JsonSerializable
         return $this->name;
     }
 
-    public function getGameName(): string
+    public function getArtist(): string
     {
-        return $this->gameName;
+        return $this->artist;
     }
 
-    public function getReleaseYea(): int
+    public function getTrack(): string
     {
-        return $this->releaseYea;
+        return $this->track;
     }
 
-    public function getTracklist(): array
+    public function getNumber(): int
     {
-        return $this->tracklist;
+        return $this->number;
     }
 
+    public function getDuration(): int
+    {
+        return $this->duration;
+    }
 
     public function jsonSerialize(): mixed
     {
-        // TODO: Implement jsonSerialize() method.
+        return array(
+            "id" => $this->getID(),
+            "name" => $this->getName(),
+            "artist" => $this->getArtist(),
+            "track" => $this->getTrack(),
+            "number" => $this->getNumber(),
+            "duration" => $this->getDuration()
+            
+            );
+
+
     }
 }
