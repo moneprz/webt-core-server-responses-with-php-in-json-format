@@ -1,11 +1,14 @@
 <?php
 
-//require 'Songs.php';
 require 'Seeder.php';
+
+header('Content-type: application/json');
+
 class TestOSTsApi
 {
 
-    public function handleRequest (){
+    public function handleRequest()
+    {
         if (isset($_GET['ost_id'])) {
             $ostId = $_GET['ost_id'];
             $this->outputSingleOST($ostId);
@@ -28,7 +31,8 @@ class TestOSTsApi
         echo json_encode(["error" => "OST not found"], JSON_PRETTY_PRINT);
     }
 
-    public function outputAllOSTs() {
+    public function outputAllOSTs()
+    {
         $seeder = new Seeder();
         $osts = $seeder->createOSTs();
 
