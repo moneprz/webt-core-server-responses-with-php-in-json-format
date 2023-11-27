@@ -1,59 +1,60 @@
+
 <?php
 
-class ost implements JsonSerializable
-{
-    protected int $ID;
-    protected string $name;
-    protected string $artist;
-    protected string $track;
-    protected int $number;
-    protected int $duration;
-    public function __construct($ID, $name, $artist, $track, $number, $duration)
+
+class OST implements JsonSerializable {
+
+    private int $ID;
+    private string $name;
+    private string $videoGameName;
+    private int $releaseYear;
+    private array $trackList;
+
+
+    public function __construct($ID, $name, $videoGameName, $releaseYear, $trackList)
     {
         $this->ID = $ID;
         $this->name = $name;
-        $this->artist = $artist;
-        $this->track = $track;
-        $this->number = $number;
-        $this->duration = $duration;
+        $this->videoGameName = $videoGameName;
+        $this->releaseYear = $releaseYear;
+        $this->trackList = $trackList;
     }
 
-    public function getID(): int
-    {
-        return $this->ID;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getArtist(): string
-    {
-        return $this->artist;
-    }
-
-    public function getTrack(): string
-    {
-        return $this->track;
-    }
-
-    public function getNumber(): int
-    {
-        return $this->number;
-    }
-
-    public function getDuration(): int
-    {
-        return $this->duration;
-    }
 
     public function jsonSerialize(): mixed
     {
         return array(
-            "name" => $this->name,
-            );
-
-
+            'ID' =>$this->getID(),
+            'name' => $this->getName(),
+            'videoGameName' => $this->getVideoGameName(),
+            'releaseYear' => $this->getReleaseYear(),
+            'trackList' => $this->getTrackList()
+        );
     }
+
+    public function getID()
+    {
+        return $this->ID;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getVideoGameName()
+    {
+        return $this->videoGameName;
+    }
+
+    public function getReleaseYear()
+    {
+        return $this->releaseYear;
+    }
+
+    public function getTrackList()
+    {
+        return $this->trackList;
+    }
+
 }
