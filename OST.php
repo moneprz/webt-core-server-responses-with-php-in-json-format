@@ -1,8 +1,7 @@
 
 <?php
-//header, was für ein Dateityp rauskommen soll
-//json serializable
-//json encode
+
+
 class OST implements JsonSerializable {
 
     private int $ID;
@@ -52,15 +51,10 @@ class OST implements JsonSerializable {
     {
         return $this->releaseYear;
     }
-    
+
     public function getTrackList()
     {
         return $this->trackList;
     }
 
 }
-
-
-
-
-
