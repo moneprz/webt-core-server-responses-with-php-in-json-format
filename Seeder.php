@@ -1,7 +1,7 @@
 <?php
-
 require 'OST.php';
-require 'Songs.php';
+require 'SONGS.php';
+
 
 class Seeder{
 
@@ -37,7 +37,7 @@ class Seeder{
 
         $OSTs[2] = new OST(3,"Opening", "Pokemon Blue", 1996, $OSTsongs3);
 
-        return array($OSTs);
+        return $OSTs;
     }
 
 }
