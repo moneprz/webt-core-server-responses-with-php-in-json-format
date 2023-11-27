@@ -9,7 +9,7 @@ class OST implements JsonSerializable {
     private string $name;
     private string $videoGameName;
     private int $releaseYear;
-    private string $trackList;
+    private array $trackList;
 
 
     public function __construct($ID, $name, $videoGameName, $releaseYear, $trackList)
